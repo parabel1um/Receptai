@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "@/components/navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "Receptai",
-  description: "Dalinkitės receptais",
+  description:
+    "Dalinkitės savo mėgstamiausiais receptais greitai ir paprastai.",
   icons: {
     icon: "/favicon.png",
   },
@@ -18,7 +20,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body className="min-h-screen bg-background">
+          <Navbar />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
