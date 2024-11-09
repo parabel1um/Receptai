@@ -4,10 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import LogInButton from "./LogInButton";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const NavbarComponent = () => {
   const [currentRoute, setCurrentRoute] = useState("");
 
+  const router = useRouter();
   const pathname = usePathname() || "/";
 
   useEffect(() => {
@@ -17,7 +20,10 @@ const NavbarComponent = () => {
 
   return (
     <header className="max-w-7xl xl:mx-auto mx-8 px-6 py-4 mt-4 flex items-center justify-between rounded-[35px] border-[2px] border-[#262522] border-opacity-25">
-      <div className="flex items-center gap-2">
+      <button
+        onClick={() => router.push("/")}
+        className="flex items-center gap-2"
+      >
         <Image
           src={"/favicon.png"}
           alt="logo"
@@ -26,7 +32,7 @@ const NavbarComponent = () => {
           decoding="async"
         />
         <p className="font-semibold text-xl tracking-tight ">Receptai</p>
-      </div>
+      </button>
       <div className="flex gap-7">
         <Link href="/" className="font-semibold uppercase cursor-pointer">
           <span
@@ -84,7 +90,12 @@ const NavbarComponent = () => {
         </Link>
       </div>
       <div className="w-36">
-        <LogInButton />
+        <SignedOut>
+          <LogInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </header>
   );

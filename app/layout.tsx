@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 export const metadata: Metadata = {
   title: "Receptai",
   description:
-    "Dalinkitės savo mėgstamiausiais receptais greitai ir paprastai.",
+    "Dalinkitės savo mėgstamiausiais receptais paprastai ir greitai.",
   icons: {
     icon: "/favicon.png",
   },
@@ -18,12 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className="min-h-screen bg-background">
-          <Navbar />
-          {children}
-        </body>
+    <ClerkProvider dynamic>
+      <html lang="lt">
+        <body className="min-h-screen bg-background">{children}</body>
       </html>
     </ClerkProvider>
   );

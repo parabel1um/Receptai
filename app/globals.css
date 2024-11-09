@@ -16,3 +16,135 @@
 body {
   font-family: var(--font-family-rubik);
 }
+
+.cl-socialButtonsBlockButtonText {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-socialButtonsBlockButtonText::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "Tęsti su Google";
+  color: black;
+}
+
+.cl-internal-2iusy0 {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-internal-2iusy0::after {
+  position: absolute;
+  right: 35%;
+  top: 0;
+  visibility: visible;
+  content: "Tęsti";
+  color: black;
+}
+
+.cl-formFieldLabel__emailAddress-field {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-formFieldLabel__emailAddress-field::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "El. paštas";
+  color: black;
+}
+
+.cl-formFieldLabel__password-field {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-formFieldLabel__password-field::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "Slaptažodis";
+  color: black;
+}
+
+.cl-internal-1dauvpw {
+  display: none;
+}
+
+.cl-dividerText {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-dividerText::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "arba";
+  color: black;
+}
+
+.cl-formFieldErrorText {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-formFieldErrorText::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "Nepavyko rasti jūsų paskyros.";
+  color: red;
+}
+
+.cl-formFieldSuccessText {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-formFieldSuccessText::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "Jūsų slaptažodis atitinka visus reikalavimus.";
+  color: rgba(0, 0, 0, 0.526);
+}
+
+.cl-internal-rk8nkz {
+  display: none;
+}
+
+#error-password {
+  visibility: hidden;
+  position: relative;
+}
+
+#error-password::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "Slaptažodį turi sudaryti ne mažiau kaip 8 simboliai.";
+  color: red;
+}
+
+.cl-formFieldInfoText {
+  display: none;
+}
+
+.cl-internal-1ddddgp {
+  display: none;
+}
+
+.cl-userButtonPopoverFooter {
+  display: none;
+}
