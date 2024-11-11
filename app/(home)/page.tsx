@@ -5,7 +5,7 @@ export default function Home() {
     <section className="max-w-7xl xl:mx-auto mx-8 my-8 flex h-full flex-col justify-center items-center">
       <div className="relative z-10 w-full h-full rounded-[40px] min-h-[700px] overflow-hidden">
         <div className="z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-3 items-center justify-center text-center flex-col text-background">
-          <h1 className="text-6xl font-bold uppercase tracking-tighter">
+          <h1 className="md:text-6xl text-2xl font-bold uppercase tracking-tighter">
             Atraskite naujus skonius
           </h1>
           <p className="text-lg tracking-tight whitespace-nowrap">
