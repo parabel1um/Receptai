@@ -82,8 +82,11 @@ const NewestRecipes = () => {
           key={index}
           className="mb-4 p-4 w-full max-w-[350px] bg-[#FFFBF2] rounded-xl relative"
         >
-          <button onClick={() => handleLike(post.id, post.likeCount)}>
-            <Heart className="absolute top-4 right-4" />
+          <button
+            onClick={() => handleLike(post.id, post.likeCount)}
+            className="absolute top-4 right-4"
+          >
+            <Heart />
           </button>
           <p className="text-gray-600 text-sm">{post.username}</p>
           <h1 className="font-bold text-lg">{post.title}</h1>
