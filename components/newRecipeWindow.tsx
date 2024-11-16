@@ -34,7 +34,7 @@ const NewReceptWindow = ({
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const response = await fetch("/api/createRecipe", {
+      const response = await fetch("/api/recipes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -105,6 +105,20 @@ body {
   color: red;
 }
 
+.cl-formFieldLabel__username-field {
+  visibility: hidden;
+  position: relative;
+}
+
+.cl-formFieldLabel__username-field::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  content: "Slapyvardis";
+  color: black;
+}
+
 .cl-formFieldSuccessText {
   visibility: hidden;
   position: relative;

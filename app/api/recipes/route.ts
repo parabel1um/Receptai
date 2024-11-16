@@ -25,7 +25,9 @@ export async function POST(req: Request) {
     const newPost = new Post({
       title,
       text,
+      date: new Date(),
       userId: found._id,
+      username: found.username,
     });
 
     await newPost.save();
@@ -38,6 +40,20 @@ export async function POST(req: Request) {
     console.error("error creating recipe:", error);
     return NextResponse.json(
       { error: "error creating recipe" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(req: Request) {
+  try {
+    await connect();
+    const posts = await Post.find();
+    return NextResponse.json({ success: true, posts }, { status: 200 });
+  } catch (error) {
+    console.error("error getting recipes:", error);
+    return NextResponse.json(
+      { error: "error getting recipes" },
       { status: 500 }
     );
   }

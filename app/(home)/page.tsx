@@ -1,3 +1,4 @@
+import NewestRecipes from "@/components/NewestRecipes";
 import Image from "next/image";
 
 export default function Home() {
@@ -24,10 +25,12 @@ export default function Home() {
         <div className="bg-black w-full h-full absolute top-0 left-0 opacity-40" />
       </div>
       <div className="mt-10 w-full min-h-[600px] rounded-[40px] border-4 border-[#262522] border-opacity-25 px-12 py-8 flex flex-col justify-start items-start ">
-        <h1 className="text-4xl font-bold uppercase tracking-tighter text-[#262522] text-opacity-70">
+        <h1 className="lg:text-3xl text-xl font-bold uppercase tracking-tighter text-[#262522] text-opacity-70">
           Naujausi receptai
         </h1>
-        <div className="flex gap-20 w-full h-full"></div>
+        <div className="flex gap-20 w-full h-full">
+          <NewestRecipes />
+        </div>
       </div>
     </section>
   );
