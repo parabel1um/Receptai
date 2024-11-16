@@ -58,3 +58,34 @@ export async function GET(req: Request) {
     );
   }
 }
+
+export async function PUT(req: Request) {
+  try {
+    const { postId } = await req.json();
+
+    await connect();
+    const userData = await currentUser();
+
+    if (!userData?.id) {
+      return NextResponse.json({ error: "not authenticated" }, { status: 401 });
+    }
+
+    const found = await User.findOne({ clerkId: userData.id });
+    if (!found) {
+      return NextResponse.json({ error: "user not found" }, { status: 404 });
+    }
+
+    const post = await Post.findById(postId);
+    console.log(postId);
+    if (!post) {
+      return NextResponse.json({ error: "post not found" }, { status: 404 });
+    }
+
+    post.likeCount += 1;
+    await post.save();
+    return NextResponse.json({ success: true, post }, { status: 200 });
+  } catch (error) {
+    console.error("error adding like:", error);
+    return NextResponse.json({ error: "error adding like" }, { status: 500 });
+  }
+}
