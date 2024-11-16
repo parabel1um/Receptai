@@ -7,10 +7,13 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { createUser } from "@/actions/user.action";
+import ReceptButton from "./CreateReceptButton";
+import NewReceptWindow from "../newReceptWindow";
 
 const NavbarComponent = () => {
   const [currentRoute, setCurrentRoute] = useState("");
   const [navbarActive, setNavbarActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
     setNavbarActive(!navbarActive);
@@ -23,6 +26,20 @@ const NavbarComponent = () => {
     setCurrentRoute(pathname);
     console.log(pathname);
   }, [pathname]);
+
+  useEffect(() => {
+    console.log(isOpen);
+
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -96,15 +113,23 @@ const NavbarComponent = () => {
             </span>
           </Link>
         </div>
-        <div className="w-36">
+        <div className="w-fit">
           <SignedOut>
             <LogInButton />
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <div className="flex gap-5">
+              <ReceptButton setOpen={setIsOpen} />
+              <UserButton />
+            </div>
           </SignedIn>
         </div>
       </header>
+      {isOpen && (
+        <div className="absolute top-0 left-0 w-full h-full ">
+          <NewReceptWindow isOpen={isOpen} setOpen={setIsOpen} />
+        </div>
+      )}
     </>
   );
 };
