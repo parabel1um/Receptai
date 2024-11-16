@@ -32,7 +32,27 @@ const NewReceptWindow = ({
     },
   });
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+    try {
+      const response = await fetch("/api/createRecipe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.error || "failed to create recipe");
+      }
+
+      setOpen(false);
+    } catch (error) {
+      console.error("error creating recipe:", error);
+    }
+  };
 
   return (
     <div className="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -58,7 +78,7 @@ const NewReceptWindow = ({
                   <FormControl>
                     <Input
                       className="rounded-[8px]"
-                      placeholder="Pavadinimas"
+                      placeholder="Įrašykite pavadinimą"
                       {...field}
                     />
                   </FormControl>
@@ -74,7 +94,7 @@ const NewReceptWindow = ({
                   <FormLabel>Recepto Aprašymas</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Jūsų recepto aprašymas"
+                      placeholder="Įrašykite recepto aprašymą"
                       className="resize-none rounded-[8px]"
                       {...field}
                     />

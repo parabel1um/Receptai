@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { createUser } from "@/actions/user.action";
 import ReceptButton from "./CreateReceptButton";
-import NewReceptWindow from "../newReceptWindow";
+import NewReceptWindow from "../newRecipeWindow";
 
 const NavbarComponent = () => {
   const [currentRoute, setCurrentRoute] = useState("");
