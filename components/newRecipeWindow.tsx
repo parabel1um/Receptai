@@ -15,6 +15,9 @@ const formSchema = z.object({
   text: z.string().min(10, {
     message: "Aprašymą turi sudaryti ne mažiau kaip 10 simbolių.",
   }),
+  ingredients: z.string().min(2, {
+      message: "Aprašymą turi sudaryti ne mažiau kaip 2 simboliai."
+    }),
 });
 
 const NewReceptWindow = ({
@@ -96,6 +99,23 @@ const NewReceptWindow = ({
                     <Textarea
                       placeholder="Įrašykite recepto aprašymą"
                       className="resize-none rounded-[8px]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red-500 mt-2" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="ingredients"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Ingredientai</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="rounded-[8px]"
+                      placeholder="Įrašykite ingredientus"
                       {...field}
                     />
                   </FormControl>

@@ -15,8 +15,13 @@ interface Post {
   __v: number;
 }
 
+interface Liked {
+  liked: number;  // 0 arba 1
+}
+
 const NewestRecipes = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [liked, setLiked] = useState<Liked[]>([])
 
   useEffect(() => {
     const getAllPosts = async () => {
@@ -44,10 +49,11 @@ const NewestRecipes = () => {
         return [];
       }
     };
+
     getAllPosts();
   }, []);
 
-  const handleLike = async (postId: string, currentLikeCount: number) => {
+  const handleLike = async (postId: string, currentLikeCount: number, index: number) => {
     try {
       const updated = posts.map((post) => {
         if (post.id === postId) {
@@ -67,6 +73,8 @@ const NewestRecipes = () => {
 
       const result = await response.json();
 
+      setLiked((prev) => prev.fill(0));
+
       if (!result.success) {
         throw new Error(result.error || "failed to create recipe");
       }
@@ -83,10 +91,9 @@ const NewestRecipes = () => {
           className="mb-4 p-4 w-full max-w-[350px] bg-[#FFFBF2] rounded-xl relative"
         >
           <button
-            onClick={() => handleLike(post.id, post.likeCount)}
+            onClick={() => handleLike(post.id, post.likeCount, index)}
             className="absolute top-4 right-4"
           >
-            <Heart />
           </button>
           <p className="text-gray-600 text-sm">{post.username}</p>
           <h1 className="font-bold text-lg">{post.title}</h1>
